@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Мои заметки",
+    "slug": "notes-mobile",
+    "version": "1.6.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "notes-app",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.alliancewd.notes"
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6ce28bab-c03d-461b-b85b-6552f494d044"
+      }
+    }
+  }
+}
