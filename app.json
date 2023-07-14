@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Мои заметки",
+    "name": "Заметки и задачи",
     "slug": "notes-mobile",
-    "version": "1.6.2",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "notes-app",
@@ -31,7 +31,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6ce28bab-c03d-461b-b85b-6552f494d044"
+        "projectId": "054c73f5-73c5-4373-bd2f-32356151c66f"
       }
     }
   }

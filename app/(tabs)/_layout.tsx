@@ -15,7 +15,7 @@ function TabBarIcon(props: {
 }) {
   return (
     <MaterialIcons
-      size={props.isHideDesc === true ? 31 : 23}
+      size={props.isHideDesc === true ? 27 : 23}
       style={{ height: 30, marginBottom: props.isHideDesc ? -22 : -30 }}
       {...props}
     />

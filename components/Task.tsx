@@ -12,16 +12,22 @@ import {
 import { View } from "./Themed";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export function Task({ value, task }: { value: any; task: any }) {
+export function Task({
+  value,
+  task,
+  completed,
+  remove,
+}: {
+  value: any;
+  task: any;
+  completed: any;
+  remove: any;
+}) {
   const theme = useTheme();
-
-const [test, setTest] = React.useState("s");
 
   const taskFilter = (task: any) => {
     return task.date === value;
   };
-
-  //   const countInSection = task.filter((t: any) => t.date === value).length;
 
   return (
     <View style={styles.content}>
@@ -42,8 +48,7 @@ const [test, setTest] = React.useState("s");
           .filter((t: any) => taskFilter(t))
           .map((t: any, index: number) => {
             return (
-              <>
-              <Text>{test}</Text>
+              <View key={index}>
                 <List.Item
                   title={t.title}
                   description={t.description}
@@ -55,32 +60,22 @@ const [test, setTest] = React.useState("s");
                     <IconButton
                       icon={t.isCompleted ? "check-circle" : "circle-outline"}
                       style={{ borderRadius: 50 }}
-                      onPress={() => setTest("11231")}
+                      onPress={() => completed(index)}
                     />
-                    // <MaterialCommunityIcons
-                    //   name={t.isCompleted ? "check-circle" : "circle-outline"}
-                    //   size={23}
-                    //   color={theme.colors.onBackground}
-                    // />
                   )}
                   right={(props) => (
                     <IconButton
                       icon="trash-can-outline"
                       iconColor={theme.colors.error}
+                      size={t.isCompleted ? 24 : 0}
+                      disabled={!t.isCompleted}
                       style={{ marginRight: -22, borderRadius: 50 }}
-                      onPress={() => setTest("Sdasdasd")}
+                      onPress={() => remove(index)}
                     />
-                    // <MaterialCommunityIcons
-                    //   onPress={() => console.log("DELETED")}
-                    //   name={"trash-can-outline"}
-                    //   size={t.isCompleted ? 23 : 0}
-                    //   color={theme.colors.error}
-                    //   style={{ marginLeft: 10, marginRight: -21 }}
-                    // />
                   )}
                 />
                 <Divider />
-              </>
+              </View>
             );
           })}
       </List.Section>

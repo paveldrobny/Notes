@@ -50,7 +50,7 @@ export default function TabThreeScreen() {
       </List.Section>
 
       <List.Section style={styles.section}>
-        <List.Subheader>Абитуриент АДИ v{expo.version}</List.Subheader>
+        <List.Subheader>{expo.name} v{expo.version}</List.Subheader>
       </List.Section>
     </View>
   );
