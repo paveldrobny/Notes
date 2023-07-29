@@ -25,7 +25,7 @@ export function useThemeColor(
   if (colorFromProps) {
     return colorFromProps;
   } else {
-    return Colors[theme][colorName];
+    return Colors["dark"][colorName];
   }
 }
 
@@ -46,7 +46,6 @@ export function Text(props: TextProps) {
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const { isDarkTheme } = React.useContext(Context) as ContextType;
   const theme = useTheme();
   const backgroundColor = theme.colors.background; //isDarkTheme ? "black" : "white";
   // const backgroundColor = useThemeColor(

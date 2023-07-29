@@ -1,18 +1,13 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
-import { useColorScheme } from "react-native";
 import {
   Provider as PaperProvider,
   MD3LightTheme,
   MD3DarkTheme,
   useTheme,
 } from "react-native-paper";
-import Colors from "../constants/Colors";
-import Parse from "parse/react-native.js";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Context } from "../context";
 import React from "react";
 
@@ -40,13 +35,6 @@ export default function RootLayout() {
     </>
   );
 }
-
-// Parse.setAsyncStorage(AsyncStorage);
-// Parse.initialize(
-//   "yxPnWbQX9w1aSveJmbTIEJyWJUO7Lg4emp6rEmSX",
-//   "7JUESLrz0P2ALkZBtUIPLi1XJ7IN1ItWySclh5lU"
-// );
-// Parse.serverURL = "https://parseapi.back4app.com/";
 
 const lightTheme = {
   ...MD3LightTheme,
@@ -178,7 +166,9 @@ function RootLayoutNav() {
         >
           <Stack
             screenOptions={{
-              statusBarColor: theme.colors.background,
+              statusBarColor: isDarkTheme
+                ? darkTheme.colors.background
+                : lightTheme.colors.background,
               statusBarStyle: isDarkTheme ? "light" : "dark",
             }}
           >

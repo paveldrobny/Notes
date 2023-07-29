@@ -67,7 +67,7 @@ export function Switch(props: ISwitch) {
 const styles = StyleSheet.create({
   switchItem: {
     width: "100%",
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     marginBottom: 2,
   },
   switchContent: {

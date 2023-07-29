@@ -16,7 +16,7 @@ function TabBarIcon(props: {
   return (
     <MaterialCommunityIcons
       size={props.isHideDesc === true ? 27 : 23}
-      style={{ height: 30, marginBottom: props.isHideDesc ? -22 : -30 }}
+      style={{ height: 30, marginBottom: props.isHideDesc ? -22 : -31 }}
       {...props}
     />
   );
@@ -55,7 +55,7 @@ export default function TabLayout() {
           backgroundColor: theme.colors.background,
         },
         headerTitleStyle: {
-          fontSize: 19,
+          fontSize: 21,
           color: Colors[colorScheme ?? "light"].text,
         },
         tabBarStyle: {

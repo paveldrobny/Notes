@@ -175,7 +175,7 @@ export default function TabOneScreen() {
               onLongPress={() => removeDialog(note.title, index)}
               key={index}
               mode="elevated"
-              style={{ marginVertical: 5 }}
+              style={{ marginVertical: 5, marginHorizontal: 10 }}
             >
               <Card.Content>
                 <Text variant="titleLarge">{note.title}</Text>
@@ -204,9 +204,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 10,
   },
-  scroll: {
-    paddingHorizontal: 10,
-  },
+  scroll: {},
   text: {
     fontSize: 14,
     textAlign: "right",
