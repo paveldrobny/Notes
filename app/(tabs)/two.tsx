@@ -58,21 +58,32 @@ export default function TabTwoScreen() {
     .filter((task: any) => task.isCompleted === true)
     .map((task) => task.isCompleted).length;
 
+  const isEmptyTitle = () => {
+    for (var i = 0; i < tasks.length; i++) {
+      if (tasks[i].title === title) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   function addTask() {
     if (title.trim()) {
-      const obj = {
-        title: title,
-        description: desc,
-        isCompleted: false,
-        date: new Date().toLocaleDateString(),
-      };
+      if (isEmptyTitle()) {
+        const obj = {
+          title: title,
+          description: desc,
+          isCompleted: false,
+          date: new Date().toLocaleDateString(),
+        };
 
-      tasks.push(obj);
-      setTasks(tasks);
-      storeData();
+        tasks.push(obj);
+        setTasks(tasks);
+        storeData();
 
-      setTitle("");
-      setDesc("");
+        setTitle("");
+        setDesc("");
+      }
     }
   }
 

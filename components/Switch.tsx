@@ -1,27 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Button, TouchableRipple } from "react-native-paper";
+import { Button, TouchableRipple, useTheme } from "react-native-paper";
 import { Context } from "../context";
 import { ContextType } from "../types";
 import Colors from "../constants/Colors";
 import { ISwitch } from "../constants/Interfaces";
 
 export function Switch(props: ISwitch) {
+  const theme = useTheme();
   const { isDarkTheme } = React.useContext(Context) as ContextType;
 
   return (
     <TouchableOpacity
       activeOpacity={1}
       onPress={() => props.setValue(!props.value)}
-
-      style={[
-        {
-          backgroundColor: isDarkTheme
-            ? Colors.dark.selected
-            : Colors.light.selected,
-        },
-        styles.switchItem,
-      ]}
+      style={[styles.switchItem]}
     >
       <View style={styles.switchContent}>
         <Text
@@ -41,7 +34,9 @@ export function Switch(props: ISwitch) {
                 ? Colors.dark.background
                 : Colors.light.background,
             },
-            props.value ? styles.active : styles.nonActive,
+            props.value
+              ? { backgroundColor: theme.colors.primary }
+              : styles.nonActive,
           ]}
         >
           <View
@@ -51,7 +46,16 @@ export function Switch(props: ISwitch) {
                   ? Colors.dark.text
                   : Colors.light.text,
               },
-              props.value ? styles.dotActive : styles.dot,
+              props.value
+                ? [
+                    {
+                      backgroundColor: isDarkTheme
+                        ? Colors.light.text
+                        : Colors.dark.text,
+                    },
+                    styles.dotActive,
+                  ]
+                : styles.dot,
             ]}
           ></View>
         </View>
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   active: {
-    backgroundColor: "#016666",
+    backgroundColor: "rgb(0, 64, 162)",
   },
   nonActive: {
     borderWidth: 1,
@@ -102,6 +106,5 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 50,
-    backgroundColor: "white",
   },
 });

@@ -4,11 +4,13 @@ import { Context } from "../../context";
 import { ContextType } from "../../types";
 import Colors from "../../constants/Colors";
 import { expo } from "../../app.json";
-import { Divider, List, Text } from "react-native-paper";
+import { Divider, List, Text, useTheme } from "react-native-paper";
 import { View } from "../../components/Themed";
 import { Switch } from "../../components/Switch";
 
 export default function TabThreeScreen() {
+  const theme = useTheme();
+
   const {
     isDarkTheme,
     setDarkTheme,
@@ -35,22 +37,22 @@ export default function TabThreeScreen() {
           value={isHideDesc}
           setValue={setHideDesc}
         />
-        <Divider />
-        <Switch
-          label="Титулка модальных окон слева"
-          value={isHeaderLeft}
-          setValue={setHeaderLeft}
-        />
-        <Divider />
-        <Switch
-          label="Анимации переходов"
-          value={isAnimation}
-          setValue={setAnimation}
-        />
       </List.Section>
 
       <List.Section style={styles.section}>
-        <List.Subheader>{expo.name} v{expo.version}</List.Subheader>
+        <List.Subheader>Dev</List.Subheader>
+        <Switch
+          label="Убрать тень у заголовка"
+          value={isDarkTheme}
+          setValue={setDarkTheme}
+        />
+        <Divider />
+      </List.Section>
+
+      <List.Section style={styles.section}>
+        <List.Subheader>
+          {expo.name} v{expo.version}
+        </List.Subheader>
       </List.Section>
     </View>
   );

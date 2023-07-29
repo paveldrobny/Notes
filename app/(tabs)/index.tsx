@@ -30,6 +30,7 @@ export default function TabOneScreen() {
   const [notes, setNotes] = React.useState<Array<INote>>([]);
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
+  const [isTitleEmpty, setTitleEmpty] = React.useState(false);
 
   interface INote {
     title: string;
@@ -71,7 +72,7 @@ export default function TabOneScreen() {
     setNotes(array);
     storeData();
     getData();
-    setCurrentName("")
+    setCurrentName("");
     setCurrentID(-1);
     setVisibleRemoveDialog(false);
   }
@@ -121,6 +122,7 @@ export default function TabOneScreen() {
               outlineStyle={styles.textInput}
               label="Название"
               value={title}
+              maxLength={75}
               style={{ marginBottom: 10 }}
               onChangeText={(desc) => setTitle(desc)}
             />
@@ -129,6 +131,7 @@ export default function TabOneScreen() {
               outlineStyle={[styles.textInput]}
               label="Описание (необязательно)"
               value={desc}
+              maxLength={200}
               multiline={true}
               style={{ height: 100 }}
               onChangeText={(desc) => setDesc(desc)}
@@ -168,22 +171,19 @@ export default function TabOneScreen() {
       <ScrollView style={styles.scroll}>
         {notes.map((note, index) => {
           return (
-            <Card key={index} mode="elevated" style={{ marginVertical: 5 }}>
+            <Card
+              onLongPress={() => removeDialog(note.title, index)}
+              key={index}
+              mode="elevated"
+              style={{ marginVertical: 5 }}
+            >
               <Card.Content>
                 <Text variant="titleLarge">{note.title}</Text>
                 <Text variant="bodyMedium">{note.description}</Text>
                 <Divider style={{ marginVertical: 5 }} />
-
-                <View style={styles.view}>
-                  <Text variant="bodyMedium">{note.date}</Text>
-                  <IconButton
-                    icon="trash-can-outline"
-                    iconColor={theme.colors.error}
-                    size={22}
-                    style={{ marginBottom: 0 }}
-                    onPress={() => removeDialog(note.title, index)}
-                  />
-                </View>
+                <Text style={styles.text} variant="bodyMedium">
+                  {note.date}
+                </Text>
               </Card.Content>
             </Card>
           );
@@ -207,11 +207,9 @@ const styles = StyleSheet.create({
   scroll: {
     paddingHorizontal: 10,
   },
-  view: {
-    backgroundColor: "trasparent",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+  text: {
+    fontSize: 14,
+    textAlign: "right",
   },
   textInput: {
     borderRadius: 8,

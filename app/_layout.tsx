@@ -8,6 +8,7 @@ import {
   Provider as PaperProvider,
   MD3LightTheme,
   MD3DarkTheme,
+  useTheme,
 } from "react-native-paper";
 import Colors from "../constants/Colors";
 import Parse from "parse/react-native.js";
@@ -40,12 +41,12 @@ export default function RootLayout() {
   );
 }
 
-Parse.setAsyncStorage(AsyncStorage);
-Parse.initialize(
-  "yxPnWbQX9w1aSveJmbTIEJyWJUO7Lg4emp6rEmSX",
-  "7JUESLrz0P2ALkZBtUIPLi1XJ7IN1ItWySclh5lU"
-);
-Parse.serverURL = "https://parseapi.back4app.com/";
+// Parse.setAsyncStorage(AsyncStorage);
+// Parse.initialize(
+//   "yxPnWbQX9w1aSveJmbTIEJyWJUO7Lg4emp6rEmSX",
+//   "7JUESLrz0P2ALkZBtUIPLi1XJ7IN1ItWySclh5lU"
+// );
+// Parse.serverURL = "https://parseapi.back4app.com/";
 
 const lightTheme = {
   ...MD3LightTheme,
@@ -146,11 +147,15 @@ const darkTheme = {
 };
 
 function RootLayoutNav() {
+  const theme = useTheme();
   const [currentID, setCurrentID] = React.useState<string>("");
   const [isDarkTheme, setDarkTheme] = React.useState<boolean>(false);
   const [isHideDesc, setHideDesc] = React.useState<boolean>(false);
   const [isHeaderLeft, setHeaderLeft] = React.useState<boolean>(false);
   const [isAnimation, setAnimation] = React.useState<boolean>(false);
+
+  // DEV
+  const [isHeaderShadow, setHeaderShadow] = React.useState<boolean>(false);
 
   return (
     <>
@@ -167,13 +172,13 @@ function RootLayoutNav() {
             setHeaderLeft,
             isAnimation,
             setAnimation,
+            isHeaderShadow,
+            setHeaderShadow,
           }}
         >
           <Stack
             screenOptions={{
-              statusBarColor: isDarkTheme
-                ? Colors.dark.background
-                : Colors.light.background,
+              statusBarColor: theme.colors.background,
               statusBarStyle: isDarkTheme ? "light" : "dark",
             }}
           >
@@ -183,7 +188,7 @@ function RootLayoutNav() {
               }}
               name="(tabs)"
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="modal"
               options={{
                 animation: isAnimation ? "slide_from_right" : "none",
@@ -218,7 +223,7 @@ function RootLayoutNav() {
                 presentation: "modal",
                 headerTitleAlign: isHeaderLeft ? "left" : "center",
               }}
-            />
+            /> */}
           </Stack>
         </Context.Provider>
       </PaperProvider>
