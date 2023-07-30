@@ -10,8 +10,6 @@ import {
 } from "react-native";
 
 import React from "react";
-import { Context } from "../context";
-import { ContextType } from "../types";
 import Colors from "../constants/Colors";
 import { useTheme } from "react-native-paper";
 

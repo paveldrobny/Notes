@@ -1,8 +1,8 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Link, Tabs } from "expo-router";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Tabs } from "expo-router";
+import { StyleSheet, View } from "react-native";
 import React from "react";
-import { Text, BottomNavigation, useTheme } from "react-native-paper";
+import { BottomNavigation, useTheme } from "react-native-paper";
 import Colors from "../../constants/Colors";
 import { Context } from "../../context";
 import { ContextType } from "../../types";

@@ -2,14 +2,11 @@ import * as React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { Context } from "../../context";
 import { ContextType } from "../../types";
-import Colors from "../../constants/Colors";
 import {
-  SegmentedButtons,
   Text,
   Card,
   Divider,
   IconButton,
-  useTheme,
   Portal,
   Dialog,
   Button,
@@ -19,8 +16,6 @@ import { View } from "../../components/Themed";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function TabOneScreen() {
-  const theme = useTheme();
-  const { isDarkTheme } = React.useContext(Context) as ContextType;
   const [visibleAddDialog, setVisibleAddDialog] = React.useState(false);
   const [visibleRemoveDialog, setVisibleRemoveDialog] = React.useState(false);
 
@@ -30,7 +25,6 @@ export default function TabOneScreen() {
   const [notes, setNotes] = React.useState<Array<INote>>([]);
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
-  const [isTitleEmpty, setTitleEmpty] = React.useState(false);
 
   interface INote {
     title: string;
