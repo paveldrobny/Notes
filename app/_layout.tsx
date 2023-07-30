@@ -135,7 +135,6 @@ const darkTheme = {
 };
 
 function RootLayoutNav() {
-  const theme = useTheme();
   const [currentID, setCurrentID] = React.useState<string>("");
   const [isDarkTheme, setDarkTheme] = React.useState<boolean>(false);
   const [isHideDesc, setHideDesc] = React.useState<boolean>(false);

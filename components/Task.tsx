@@ -1,16 +1,12 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import {
-  TouchableRipple,
-  Text,
   List,
   Divider,
-  Button,
   IconButton,
   useTheme,
 } from "react-native-paper";
 import { View } from "./Themed";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export function Task({
   value,
@@ -67,8 +63,8 @@ export function Task({
                     <IconButton
                       icon="trash-can-outline"
                       iconColor={theme.colors.error}
-                      // size={t.isCompleted ? 24 : 0}
-                      // disabled={!t.isCompleted}
+                      size={t.isCompleted ? 24 : 0}
+                      disabled={!t.isCompleted}
                       style={{ marginRight: -22, borderRadius: 50 }}
                       onPress={() => remove(t.title)}
                     />

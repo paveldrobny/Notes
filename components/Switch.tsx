@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Button, TouchableRipple, useTheme } from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import { Context } from "../context";
 import { ContextType } from "../types";
 import Colors from "../constants/Colors";

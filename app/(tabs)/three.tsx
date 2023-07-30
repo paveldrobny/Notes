@@ -1,25 +1,18 @@
 import * as React from "react";
-import { Image, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Context } from "../../context";
 import { ContextType } from "../../types";
-import Colors from "../../constants/Colors";
 import { expo } from "../../app.json";
 import { Divider, List, Text, useTheme } from "react-native-paper";
 import { View } from "../../components/Themed";
 import { Switch } from "../../components/Switch";
 
 export default function TabThreeScreen() {
-  const theme = useTheme();
-
   const {
     isDarkTheme,
     setDarkTheme,
     isHideDesc,
     setHideDesc,
-    isHeaderLeft,
-    setHeaderLeft,
-    isAnimation,
-    setAnimation,
     isHeaderShadow,
     setHeaderShadow,
   } = React.useContext(Context) as ContextType;

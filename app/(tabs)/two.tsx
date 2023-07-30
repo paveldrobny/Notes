@@ -5,12 +5,8 @@ import { ContextType } from "../../types";
 import Colors from "../../constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
-  SegmentedButtons,
   Text,
-  Card,
-  Divider,
   Button,
-  List,
   IconButton,
   Dialog,
   TextInput,
@@ -21,7 +17,6 @@ import { Task } from "../../components/Task";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function TabTwoScreen() {
-  const { isDarkTheme } = React.useContext(Context) as ContextType;
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
 
@@ -76,8 +71,7 @@ export default function TabTwoScreen() {
           isCompleted: false,
           date: new Date().toLocaleDateString(),
         };
-
-        
+ 
         tasks.push(obj);
         setTasks(tasks);
         storeData();
