@@ -52,10 +52,6 @@ export default function TabThreeScreen() {
       </List.Section>
 
       <View style={styles.about}>
-        <Image
-          style={styles.img}
-          source={require("../../assets/images/about-icon.png")}
-        />
         <Text style={styles.aboutText}>
           {expo.name} v{expo.version}
         </Text>
@@ -80,14 +76,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     marginTop: 10,
-  },
-
-  img: {
-    width: 30,
-    height: 30,
-    marginHorizontal: 10,
+    paddingLeft: 10,
   },
   aboutText: {
-    fontSize: 17,
+    fontSize: 18,
   },
 });

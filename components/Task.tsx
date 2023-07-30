@@ -60,17 +60,17 @@ export function Task({
                     <IconButton
                       icon={t.isCompleted ? "check-circle" : "circle-outline"}
                       style={{ borderRadius: 50 }}
-                      onPress={() => completed(index)}
+                      onPress={() => completed(t.title)}
                     />
                   )}
                   right={(props) => (
                     <IconButton
                       icon="trash-can-outline"
                       iconColor={theme.colors.error}
-                      size={t.isCompleted ? 24 : 0}
-                      disabled={!t.isCompleted}
+                      // size={t.isCompleted ? 24 : 0}
+                      // disabled={!t.isCompleted}
                       style={{ marginRight: -22, borderRadius: 50 }}
-                      onPress={() => remove(index)}
+                      onPress={() => remove(t.title)}
                     />
                   )}
                 />

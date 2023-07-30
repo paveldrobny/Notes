@@ -77,6 +77,7 @@ export default function TabTwoScreen() {
           date: new Date().toLocaleDateString(),
         };
 
+        
         tasks.push(obj);
         setTasks(tasks);
         storeData();
@@ -89,9 +90,11 @@ export default function TabTwoScreen() {
 
   function completedTask(id: any) {
     setTasks(
-      tasks.map((task, index) => {
-        if (index === id) {
+      tasks.map((task) => {
+        if (task.title === id) {
           task.isCompleted = !task.isCompleted;
+          
+          console.log("SDasd")
           storeData();
         }
         return task;
@@ -99,15 +102,19 @@ export default function TabTwoScreen() {
     );
   }
 
-  function removeTask(id: any) {
-    let array = tasks;
-
-    array.splice(id, 1);
-    setTasks(array);
-
-    storeData();
-    getData();
-  }
+  const removeTask = async (id: any) => {
+    setTasks(
+      tasks.map((task, index) => {
+        if (task.title === id) {
+          tasks.splice(index, 1);
+          storeData();
+          getData();
+          console.log(index)
+        }
+        return task;
+      })
+    );
+  };
 
   const storeData = async () => {
     try {
